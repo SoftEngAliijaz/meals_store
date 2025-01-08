@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:meals_store/models/category.dart';
 
 class CategoryGridItem extends StatelessWidget {
-  CategoryGridItem({Key? key, required this.category}) : super(key: key);
+  CategoryGridItem({
+    Key? key,
+    required this.category,
+    required this.onTap,
+  }) : super(key: key);
 
   final Category category;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: InkWell(
-        onTap: () {
-          print('Tapped: ${category.title}');
-        },
+        onTap: onTap,
         splashColor: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(10.0),
         child: Container(

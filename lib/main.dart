@@ -12,16 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Meals Store',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-            brightness: Brightness.dark,
-            seedColor: const Color.fromARGB(255, 131, 57, 0)),
-        primarySwatch: Colors.blue,
-        textTheme: GoogleFonts.latoTextTheme(),
-      ),
-      home: const CategoriesScreen(),
-    );
+        title: 'Meals Store',
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+              brightness: Brightness.dark,
+              seedColor: const Color.fromARGB(255, 131, 57, 0)),
+          primarySwatch: Colors.blue,
+          textTheme: GoogleFonts.latoTextTheme(),
+        ),
+        home: CategoriesScreen());
   }
 }
