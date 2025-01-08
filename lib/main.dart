@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meals_store/screens/categories.dart';
+import 'package:meals_store/screens/tabs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +22,6 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           textTheme: GoogleFonts.latoTextTheme(),
         ),
-        home: CategoriesScreen());
+        home: TabsViewScreen());
   }
 }
