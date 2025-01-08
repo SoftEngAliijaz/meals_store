@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_store/models/meal.dart';
+import 'package:meals_store/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({
@@ -13,27 +14,33 @@ class MealsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Center(
-          child: Text(
-            'No Data Found',
-            style: TextStyle(color: Colors.white),
+    Widget content = Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.no_food,
+            size: 80,
+            color: Colors.grey,
           ),
-        ),
-      ],
+          const SizedBox(height: 16),
+          const Text(
+            'No Meals Found',
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.grey,
+            ),
+          ),
+        ],
+      ),
     );
 
     if (meals.isNotEmpty) {
-      return ListView.builder(
+      content = ListView.builder(
         itemCount: meals.length,
         itemBuilder: (BuildContext buildContext, int index) {
-          return Card(
-            child: Text(
-              meals[index].title,
-              style: TextStyle(color: Colors.white),
-            ),
+          return MealItem(
+            meal: meals[index],
           );
         },
       );
