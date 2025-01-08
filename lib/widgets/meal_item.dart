@@ -7,9 +7,11 @@ class MealItem extends StatelessWidget {
   const MealItem({
     Key? key,
     required this.meal,
+    required this.onTap,
   }) : super(key: key);
 
   final Meal meal;
+  final void Function(Meal meal) onTap;
 
   String get complexityText {
     return meal.complexity.name[0].toUpperCase() +
@@ -34,7 +36,9 @@ class MealItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       elevation: 5.0,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          onTap(meal);
+        },
         child: Stack(
           children: [
             FadeInImage(
