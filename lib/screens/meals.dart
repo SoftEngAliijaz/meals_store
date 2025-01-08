@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_store/models/meal.dart';
-import 'package:meals_store/screens/meal_details_screen.dart';
+import 'package:meals_store/screens/meal_details.dart';
 import 'package:meals_store/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
@@ -8,14 +8,19 @@ class MealsScreen extends StatelessWidget {
     Key? key,
     this.title,
     required this.meals,
+    required this.onToggleFavirote,
   }) : super(key: key);
 
   final String? title;
   final List<Meal> meals;
+  final void Function(Meal meal) onToggleFavirote;
 
   void selectMeal(Meal meal, BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-      return MealDetailsScreen(meal: meal);
+      return MealDetailsScreen(
+        meal: meal,
+        onToggleFavirote: onToggleFavirote,
+      );
     }));
   }
 

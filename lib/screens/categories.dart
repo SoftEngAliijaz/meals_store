@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:meals_store/data/dummy_data.dart';
 import 'package:meals_store/models/category.dart';
+import 'package:meals_store/models/meal.dart';
 import 'package:meals_store/screens/meals.dart';
 import 'package:meals_store/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen({
+    super.key,
+    required this.onToggleFavirote,
+  });
+
+  final void Function(Meal meal) onToggleFavirote;
 
   void _selectCategory(
     BuildContext context,
@@ -18,6 +24,7 @@ class CategoriesScreen extends StatelessWidget {
       return MealsScreen(
         title: category.title,
         meals: filterredMeals,
+        onToggleFavirote: onToggleFavirote,
       );
     }));
   }
