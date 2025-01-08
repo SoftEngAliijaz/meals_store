@@ -9,12 +9,60 @@ class MealDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(meal.title)),
-      body: Image(
-        image: NetworkImage(meal.imageUrl),
-        width: double.infinity,
-        height: 250.0,
-        fit: BoxFit.cover,
+      appBar: AppBar(
+        title: Text(meal.title),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network(
+              meal.imageUrl,
+              width: double.infinity,
+              height: 250.0,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Ingredients',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(color: Colors.white),
+                  ),
+                  SizedBox(height: 10.0),
+                  ...meal.ingredients.map((ingredient) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: Text(
+                          ingredient,
+                          style: TextStyle(fontSize: 16.0, color: Colors.white),
+                        ),
+                      )),
+                  SizedBox(height: 20.0),
+                  Text(
+                    'Steps',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(color: Colors.white),
+                  ),
+                  SizedBox(height: 10.0),
+                  ...meal.steps.map((step) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: Text(
+                          step,
+                          style: TextStyle(fontSize: 16.0, color: Colors.white),
+                        ),
+                      )),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
